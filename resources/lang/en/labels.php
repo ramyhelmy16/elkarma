@@ -54,6 +54,7 @@ return [
 
         'job_titles' => 'Job Titles',
         'job_title' => 'Job Title',
+        'job_matching' => 'Job Matching',
 
         'jobs' => 'Jobs',
         'job' => 'Job',

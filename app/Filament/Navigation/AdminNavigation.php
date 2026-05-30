@@ -37,19 +37,15 @@ class AdminNavigation
     public static function make(NavigationBuilder $builder): NavigationBuilder
     {
         return $builder
+            ->items([
+                NavigationItem::make(__('labels.menus.dashboard'))
+                    ->url(Dashboard::getUrl())
+                    ->icon(Heroicon::Home),
+                NavigationItem::make(__('labels.global.job_matching'))
+                    ->url(JobMatching::getUrl())
+                    ->icon(Heroicon::SquaresPlus),
+            ])
             ->groups([
-                NavigationGroup::make()
-                    ->items([
-                        NavigationItem::make(__('labels.menus.dashboard'))
-                            ->url(Dashboard::getUrl())
-                            ->icon(Heroicon::OutlinedHome),
-                    ]),
-                NavigationGroup::make(__('labels.menus.report_and_matching'))
-                    ->items([
-                        NavigationItem::make(__('labels.global.jobs'))
-                            ->url(JobMatching::getUrl())
-                            ->icon(Heroicon::OutlinedMagnifyingGlass),
-                    ]),
                 NavigationGroup::make(__('labels.menus.applicant_management'))
                     ->items([
                         NavigationItem::make(__('labels.global.applicants'))

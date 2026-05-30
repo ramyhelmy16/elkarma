@@ -1,0 +1,74 @@
+@import '../../vendor/filament/filament/resources/css/theme.css';
+@source '../../app/Filament/**/*';
+@source '../../resources/views/filament/**/*';
+
+@theme {
+    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+        'Segoe UI Symbol', 'Noto Color Emoji';
+}
+
+main.fi-main{
+    @apply px-2;
+    &:is(.fi-main,.fi-simple-main).fi-width-7xl{
+        max-width: 97%;
+    }
+}
+
+.fi-sidebar-nav::-webkit-scrollbar {
+    display: none;
+}
+
+.fi-sidebar-nav {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+aside.fi-sidebar{
+    @apply bg-gradient-to-b from-slate-600 to-slate-700 dark:bg-gradient-to-b dark:from-gray-800 dark:to-gray-900;
+
+    & .fi-sidebar-nav-groups{
+        @apply gap-y-3;
+    }
+
+    & .fi-sidebar-nav{
+        @apply px-4 pt-4;
+
+        & li.fi-sidebar-item {
+            & .fi-sidebar-item-label, .fi-sidebar-item-icon{
+                @apply text-white;
+            }
+        }
+
+        & li.fi-sidebar-item.fi-active,  li.fi-sidebar-item:hover{
+            & .fi-sidebar-item-label, .fi-sidebar-item-icon {
+                @apply text-blue-800 dark:text-blue-500;
+            }
+        }
+
+        & .fi-sidebar-group-button span, button {
+            @apply text-blue-400;
+        }
+
+        & .fi-sidebar-group-label {
+            @apply text-white;
+        }
+    }
+}
+
+nav.fi-topbar {
+    @apply bg-slate-600 dark:bg-gray-800 h-18 text-gray-800;
+
+    & select {
+        @apply text-gray-200 bg-slate-600 dark:bg-gray-800;
+    }
+}
+
+nav.fi-topbar-start {
+    @apply w-2xs;
+}
+
+.fi-ta-header{
+    @apply bg-slate-600 dark:bg-gray-800 text-white;
+    justify-content: center;
+    align-items: center;
+}

@@ -1,0 +1,16 @@
+<?php
+
+namespace App\Filament\Resources\Governorates\Pages;
+
+use App\Filament\Resources\Governorates\GovernorateResource;
+use Filament\Resources\Pages\ListRecords;
+
+class ListGovernorates extends ListRecords
+{
+    protected static string $resource = GovernorateResource::class;
+
+    protected function getHeaderActions(): array
+    {
+        return [];
+    }
+}

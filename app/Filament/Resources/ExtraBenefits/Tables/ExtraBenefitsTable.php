@@ -16,10 +16,10 @@ class ExtraBenefitsTable
     {
         return $table
             ->columns([
-                TextColumn::make('nameAR')
+                TextColumn::make('name')
                     ->label(__('labels.global.name_ar'))
                     ->searchable(),
-                TextColumn::make('name')
+                TextColumn::make('name_en')
                     ->label(__('labels.global.name'))
                     ->searchable(),
                 TextColumn::make('created_at')

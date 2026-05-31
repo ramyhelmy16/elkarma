@@ -20,6 +20,9 @@ class JobTitlesTable
     {
         return $table
             ->columns([
+                TextColumn::make('nameAr')
+                    ->label(__('labels.global.name_ar'))
+                    ->searchable(),
                 TextColumn::make('name')
                     ->label(__('labels.global.name'))
                     ->searchable(),

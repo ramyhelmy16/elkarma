@@ -15,6 +15,9 @@ class JobTitleImporter extends Importer
     public static function getColumns(): array
     {
         return [
+            ImportColumn::make('nameAr')
+                ->requiredMapping()
+                ->rules(['required', 'max:191']),
             ImportColumn::make('name')
                 ->requiredMapping()
                 ->rules(['required', 'max:191']),
@@ -25,6 +28,7 @@ class JobTitleImporter extends Importer
     public function resolveRecord(): JobTitle
     {
         return JobTitle::firstOrNew([
+            'nameAr' => $this->data['nameAr'],
             'name' => $this->data['name'],
         ]);
     }

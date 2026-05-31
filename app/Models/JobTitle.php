@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class JobTitle extends Model
 {
-    protected $fillable = ['name', "description"];
+    protected $fillable = ['nameAr', 'name', "description"];
 
     public function occupations(): HasMany
     {

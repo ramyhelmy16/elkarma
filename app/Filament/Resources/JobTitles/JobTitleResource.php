@@ -31,6 +31,9 @@ class JobTitleResource extends Resource
                 Section::make()
                     ->columnSpanFull()
                     ->schema([
+                        TextInput::make('nameAr')
+                            ->label(__('labels.global.name_ar'))
+                            ->required(),
                         TextInput::make('name')
                             ->label(__('labels.global.name'))
                             ->required(),

@@ -8,6 +8,14 @@ class ApplicantType extends Model
 {
     protected $fillable = [
         'name',
-        'nameAR'
+        'name_en'
     ];
+
+    
+    public function getTranslatedNameAttribute(): string
+    {
+        return app()->getLocale() === 'ar'
+            ? $this->name 
+            : $this->name_en;
+    }
 }

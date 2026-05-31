@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class JobTitle extends Model
 {
-    protected $fillable = ['nameAr', 'name', "description"];
+    protected $fillable = ['name', 'name_en', "description"];
 
     public function occupations(): HasMany
     {
@@ -17,5 +17,13 @@ class JobTitle extends Model
     public function workExperiences(): HasMany
     {
         return $this->hasMany(WorkExperience::class);
+    }
+
+    
+    public function getTranslatedNameAttribute(): string
+    {
+        return app()->getLocale() === 'ar'
+            ? $this->name 
+            : $this->name_en;
     }
 }

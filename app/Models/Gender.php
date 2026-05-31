@@ -8,14 +8,14 @@ class Gender extends Model
 {
     protected $fillable = [
         'name',
-        'nameAR'
+        'name_en'
     ];
 
 
     public function getTranslatedNameAttribute(): string
     {
         return app()->getLocale() === 'ar'
-            ? ($this->nameAR ?? $this->name)
-            : $this->name;
+            ? $this->name 
+            : $this->name_en;
     }
 }

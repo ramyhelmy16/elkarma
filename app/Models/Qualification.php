@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Qualification extends Model
 {
-    protected $fillable = ['name', 'name_em'];
+    protected $fillable = ['name', 'name_en'];
 
     public function applicants(): HasMany
     {

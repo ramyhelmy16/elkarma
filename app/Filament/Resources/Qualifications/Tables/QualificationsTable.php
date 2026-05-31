@@ -21,6 +21,9 @@ class QualificationsTable
         return $table
             ->columns([
                 TextColumn::make('name')
+                    ->label(__('labels.global.name_ar'))
+                    ->searchable(),
+                TextColumn::make('name_en')
                     ->label(__('labels.global.name'))
                     ->searchable(),
                 TextColumn::make('created_at')

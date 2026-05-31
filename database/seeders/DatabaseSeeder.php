@@ -22,6 +22,10 @@ class DatabaseSeeder extends Seeder
             JobTitleSeeder::class, 
             ShieldSeeder::class,
             UserSeeder::class,
+            QualificationSeeder::class,
+            ServicesSeeder::class, 
+            GovernorateSeeder::class,
+            AreaSeeder::class
         ]);
     }
 }

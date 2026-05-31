@@ -30,11 +30,11 @@ class ServiceResource extends Resource
                     ->columnSpanFull()
                     ->schema([
                         TextInput::make('name')
+                            ->label(__('labels.global.name_ar'))
+                            ->required(),
+                        TextInput::make('name_en')
                             ->label(__('labels.global.name'))
                             ->required(),
-                        Select::make('main_sector')
-                            ->options(__('labels.main_sector'))
-                            ->label(__('labels.global.main_sectors')),
                     ])
                     ->columns(2),
 
@@ -49,7 +49,7 @@ class ServiceResource extends Resource
     public static function getRelations(): array
     {
         return [
-            CompaniesRelationManager::class,
+            // CompaniesRelationManager::class,
         ];
     }
 

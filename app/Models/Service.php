@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Service extends Model
 {
-    protected $fillable = ['name', 'main_sector'];
+    protected $fillable = ['name', 'name_en'];
 
     public function companies(): HasMany
     {

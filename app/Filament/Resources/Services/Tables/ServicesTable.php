@@ -23,10 +23,10 @@ class ServicesTable
         return $table
             ->columns([
                 TextColumn::make('name')
-                    ->label(__('labels.global.name'))
+                    ->label(__('labels.global.name_ar'))
                     ->searchable(),
-                TextColumn::make('main_sector')
-                    ->label(__('labels.global.main_sectors'))
+                TextColumn::make('name_en')
+                    ->label(__('labels.global.name'))
                     ->searchable(),
                 TextColumn::make('created_at')
                     ->label(__('labels.timestamps.created_at'))
@@ -44,16 +44,6 @@ class ServicesTable
             ->emptyStateHeading(__('labels.global.empty_state'))
             ->emptyStateDescription('')
             ->filters([
-                SelectFilter::make('main_sector')
-                    ->label(__('labels.global.main_sectors'))
-                    ->options(__('labels.main_sector'))
-                    ->searchable()
-                    ->query(
-                        fn(Builder $query, $state) =>
-                        $state['value']
-                            ? $query->where('main_sector', __("labels.main_sector.{$state['value']}"))
-                            : $query
-                    ),
             ])
             ->recordActions([
                 EditAction::make(),

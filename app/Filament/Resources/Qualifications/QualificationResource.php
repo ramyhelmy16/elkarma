@@ -29,6 +29,9 @@ class QualificationResource extends Resource
                     ->columnSpanFull()
                     ->schema([
                         TextInput::make('name')
+                            ->label(__('labels.global.name_ar'))
+                            ->required(),
+                        TextInput::make('name_en')
                             ->label(__('labels.global.name'))
                             ->required(),
                     ])

@@ -19,7 +19,9 @@ class DatabaseSeeder extends Seeder
             InsuranceTypeSeeder::class,
             ExperienceLevelSeeder::class,
             ExtraBenefitSeeders::class,
-            JobTitleSeeder::class
+            JobTitleSeeder::class, 
+            ShieldSeeder::class,
+            UserSeeder::class,
         ]);
     }
 }

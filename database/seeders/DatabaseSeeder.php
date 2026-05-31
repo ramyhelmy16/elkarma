@@ -18,6 +18,8 @@ class DatabaseSeeder extends Seeder
             JobTypeSeeder::class,
             InsuranceTypeSeeder::class,
             ExperienceLevelSeeder::class,
+            ExtraBenefitSeeders::class,
+            JobTitleSeeder::class
         ]);
     }
 }

@@ -16,11 +16,11 @@ class InsuranceTypesTable
     {
         return $table
             ->columns([
-                TextColumn::make('name')
-                    ->label(__('labels.global.name'))
-                    ->searchable(),
                 TextColumn::make('nameAR')
                     ->label(__('labels.global.name_ar'))
+                    ->searchable(),
+                TextColumn::make('name')
+                    ->label(__('labels.global.name'))
                     ->searchable(),
                 TextColumn::make('created_at')
                     ->dateTime()

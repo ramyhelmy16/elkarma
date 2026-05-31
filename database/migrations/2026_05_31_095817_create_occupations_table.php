@@ -16,16 +16,17 @@ return new class extends Migration
             $table->foreignId('job_title_id')->constrained('job_titles')->cascadeOnDelete();
             $table->foreignId('company_id')->constrained("companies")->cascadeOnDelete();
             $table->text('description')->nullable();
+            $table->foreignId('qualification_id')->nullable()->constrained('qualifications')->onDelete('set null');
             $table->text('requirements')->nullable();
-
+            
             // المؤهلات والخبرة
-            $table->string('education_level');
-            $table->string('experience_needed');
-            $table->string('job_type');
+            $table->foreignId('education_level_id')->constrained('education_levels')->onDelete("restrict");
+            $table->foreignId('experience_level_id')->constrained('experience_levels')->onDelete("restrict")->after('description');
+            $table->foreignId('job_type_id')->constrained('job_types')->onDelete("restrict")->after('experience_level_id')->after('description');
 
             // المزايا
-            $table->string('insurance_type')->default('بدون');
-            $table->string('extra_benefits')->default('بدون');
+            $table->foreignId('insurance_type_id')->constrained('insurance_types')->onDelete("restrict")->after('job_type_id');
+            $table->foreignId('extra_benefit_id')->constrained('extra_benefits')->onDelete("restrict")->after('insurance_type_id');
 
             // الراتب والمواعيد
             $table->decimal('salary_min', 10, 2)->default(0);
@@ -41,8 +42,8 @@ return new class extends Migration
             $table->boolean('incentives')->default(false);
 
             // متطلبات المتقدم
-            $table->string('applicant_type')->default('للجميع');
-            $table->string('gender_preference')->default('كلا الجنسين');
+            $table->foreignId('applicant_type_id')->constrained('applicant_types')->onDelete("restrict")->after('extra_benefit_id');
+            $table->foreignId('gender_id')->constrained('genders')->onDelete("restrict")->after('applicant_type_id');
 
             // العمر
             $table->unsignedInteger('age_min')->nullable();

@@ -15,6 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('first_name', 100);
             $table->string('last_name', 100);
+            $table->foreignId('gender_id')->nullable()->constrained('genders')->onDelete('set null')->after('education_level_id');
+            $table->foreignId('education_level_id')->constrained('education_levels')->onDelete("restrict")->after('description');
             $table->string('nid', 100)->unique();
             $table->string('telephone', 20)->nullable();
             $table->string('email')->nullable();

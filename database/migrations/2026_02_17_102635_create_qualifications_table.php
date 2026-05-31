@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('qualifications', function (Blueprint $table) {
             $table->id();
             $table->string('name', 200)->unique();
+            $table->string('name_en', 200)->nullable();
             $table->timestamps();
         });
     }

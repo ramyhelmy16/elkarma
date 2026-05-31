@@ -10,20 +10,20 @@ class JobTypeSeeder extends Seeder
     public function run() : void
     {
         $types = [
-            ["name"=>"Full-time","nameAR"=>"دوام كامل"],
-            ["name"=>"Part-time","nameAR"=>"دوام جزئي"],
-            ["name"=>"Contract","nameAR"=>"عقد محدد"],
-            ["name"=>"Temporary","nameAR"=>"مؤقت"],
-            ["name"=>"freelance","nameAR"=>"عمل حر"],
-            ["name"=>"seasonal","nameAR"=>"موسمي"],
-            ["name"=>"Internship","nameAR"=>"تدريب"],
-            ["name"=>"Apprenticeship","nameAR"=>"تمهين"],
+            ["name_en"=>"Full-time","name"=>"دوام كامل"],
+            ["name_en"=>"Part-time","name"=>"دوام جزئي"],
+            ["name_en"=>"Contract","name"=>"عقد محدد"],
+            ["name_en"=>"Temporary","name"=>"مؤقت"],
+            ["name_en"=>"freelance","name"=>"عمل حر"],
+            ["name_en"=>"seasonal","name"=>"موسمي"],
+            ["name_en"=>"Internship","name"=>"تدريب"],
+            ["name_en"=>"Apprenticeship","name"=>"تمهين"],
         ];
 
         foreach ($types as $type) {
             JobType::create([
                 'name' => $type['name'],
-                'nameAR' => $type['nameAR'],
+                'name_en' => $type['name_en'],
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);

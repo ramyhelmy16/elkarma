@@ -10,26 +10,26 @@ class ExtraBenefitSeeders extends Seeder
     public function run() : void
     {
         $types = [
-            ["name"=>"Annual Bonus","nameAR"=>"مكافأة سنوية"],
-            ["name"=>"Awards Program","nameAR"=>"برنامج الجوائز"],
-            ["name"=>"Paid Vacation","nameAR"=>"إجازة سنوية مدفوعة الأجر"],
-            ["name"=>"Performance Bonus","nameAR"=>"مكافأة الأداء"],
-            ["name"=>"Flexible Hours","nameAR"=>"ساعات عمل مرنة"],
-            ["name"=>"Remote Work","nameAR"=>"العمل من المنزل"],
-            ["name"=>"Professional Training","nameAR"=>"تدريب مهني"],
-            ["name"=>"Housing Allowance","nameAR"=>"بدل السكن"],
-            ["name"=>"Company Car","nameAR"=>"سيارة الشركة"],
-            ["name"=>"Transportation Allowance","nameAR"=>"بدل مواصلات"],
-            ["name"=>"Travel Allowance","nameAR"=>"بدل سفر"],
-            ["name"=>"Meal Allowance","nameAR"=>"بدل وجبات"],
-            ["name"=>"Company Events","nameAR"=>"فعاليات الشركة"],
-            ["name"=>"On-Site Daycare","nameAR"=>"حضانة في موقع العمل"],
+            ["name_en"=>"Annual Bonus","name"=>"مكافأة سنوية"],
+            ["name_en"=>"Awards Program","name"=>"برنامج الجوائز"],
+            ["name_en"=>"Paid Vacation","name"=>"إجازة سنوية مدفوعة الأجر"],
+            ["name_en"=>"Performance Bonus","name"=>"مكافأة الأداء"],
+            ["name_en"=>"Flexible Hours","name"=>"ساعات عمل مرنة"],
+            ["name_en"=>"Remote Work","name"=>"العمل من المنزل"],
+            ["name_en"=>"Professional Training","name"=>"تدريب مهني"],
+            ["name_en"=>"Housing Allowance","name"=>"بدل السكن"],
+            ["name_en"=>"Company Car","name"=>"سيارة الشركة"],
+            ["name_en"=>"Transportation Allowance","name"=>"بدل مواصلات"],
+            ["name_en"=>"Travel Allowance","name"=>"بدل سفر"],
+            ["name_en"=>"Meal Allowance","name"=>"بدل وجبات"],
+            ["name_en"=>"Company Events","name"=>"فعاليات الشركة"],
+            ["name_en"=>"On-Site Daycare","name"=>"حضانة في موقع العمل"],
         ];
 
         foreach ($types as $type) {
             ExtraBenefits::create([
                 'name' => $type['name'],
-                'nameAR' => $type['nameAR'],
+                'name_en' => $type['name_en'],
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);

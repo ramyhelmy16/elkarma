@@ -10,14 +10,14 @@ class GenderSeeder extends Seeder
     public function run() : void
     {
         $Genders = [
-            ["name"=>"Male","nameAR"=>"ذكر"],
-            ["name"=>"Female","nameAR"=>"أنثى"],
+            ["name_en"=>"Male","name"=>"ذكر"],
+            ["name_en"=>"Female","name"=>"أنثى"],
         ];
 
         foreach ($Genders as $Gender) {
             Gender::create([
                 'name' => $Gender['name'],
-                'nameAR' => $Gender['nameAR'],
+                'name_en' => $Gender['name_en'],
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);

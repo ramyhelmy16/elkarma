@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('job_titles', function (Blueprint $table) {
             $table->id();
             $table->string('name')->unique();
-            $table->string('nameAr')->unique();
+            $table->string('name_en')->nullable();
             $table->text('description')->nullable();
             $table->timestamps();
         });

@@ -10,22 +10,22 @@ class EducationLevelSeeder extends Seeder
     public function run() : void
     {
         $edus = [
-            ["name"=>"Primary","nameAR"=>"ابتدائي"],
-            ["name"=>"Intermediate","nameAR"=>"إعدادي"],
-            ["name"=>"Secondary","nameAR"=>"ثانوي"],
-            ["name"=>"Diploma","nameAR"=>"دبلوم"],
-            ["name"=>"Associate Degree","nameAR"=>"درجة الزمالة"],
-            ["name"=>"Bachelor Degree","nameAR"=>"بكالوريوس"],
-            ["name"=>"Master Degree","nameAR"=>"ماجستير"],
-            ["name"=>"PhD","nameAR"=>"دكتوراه"],
-            ["name"=>"No Education","nameAR"=>"بدون تعليم"],
-            ["name"=>"Still Studying","nameAR"=>"لا يزال يدرس"]
+            ["name_en"=>"Primary","name"=>"ابتدائي"],
+            ["name_en"=>"Intermediate","name"=>"إعدادي"],
+            ["name_en"=>"Secondary","name"=>"ثانوي"],
+            ["name_en"=>"Diploma","name"=>"دبلوم"],
+            ["name_en"=>"Associate Degree","name"=>"درجة الزمالة"],
+            ["name_en"=>"Bachelor Degree","name"=>"بكالوريوس"],
+            ["name_en"=>"Master Degree","name"=>"ماجستير"],
+            ["name_en"=>"PhD","name"=>"دكتوراه"],
+            ["name_en"=>"No Education","name"=>"بدون تعليم"],
+            ["name_en"=>"Still Studying","name"=>"لا يزال يدرس"]
         ];
 
         foreach ($edus as $edu) {
             EducationLevel::create([
                 'name' => $edu['name'],
-                'nameAR' => $edu['nameAR'],
+                'name_en' => $edu['name_en'],
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);

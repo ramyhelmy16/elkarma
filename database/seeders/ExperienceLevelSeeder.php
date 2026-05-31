@@ -10,19 +10,19 @@ class ExperienceLevelSeeder extends Seeder
     public function run() : void
     {
         $types = [
-            ["name"=>"No Experience","nameAR"=>"بدون خبرة"],
-            ["name"=>"Less than 1 Year","nameAR"=>"أقل من سنة"],
-            ["name"=>"1 - 3 Years","nameAR"=>"1 - 3 سنوات"],
-            ["name"=>"3 - 5 Years","nameAR"=>"3 - 5 سنوات"],
-            ["name"=>"5 - 7 Years","nameAR"=>"5 - 7 سنوات"],
-            ["name"=>"7 - 10 Years","nameAR"=>"7 - 10 سنوات"],
-            ["name"=>"More than 10 Years","nameAR"=>"أكثر من 10 سنة"],
+            ["name_en"=>"No Experience","name"=>"بدون خبرة"],
+            ["name_en"=>"Less than 1 Year","name"=>"أقل من سنة"],
+            ["name_en"=>"1 - 3 Years","name"=>"1 - 3 سنوات"],
+            ["name_en"=>"3 - 5 Years","name"=>"3 - 5 سنوات"],
+            ["name_en"=>"5 - 7 Years","name"=>"5 - 7 سنوات"],
+            ["name_en"=>"7 - 10 Years","name"=>"7 - 10 سنوات"],
+            ["name_en"=>"More than 10 Years","name"=>"أكثر من 10 سنة"],
         ];
 
         foreach ($types as $type) {
             ExperienceLevel::create([
+                'name_en' => $type['name_en'],
                 'name' => $type['name'],
-                'nameAR' => $type['nameAR'],
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);

@@ -27,11 +27,11 @@ class ApplicantTypeResource extends Resource
     {
         return $schema
             ->components([
-                TextInput::make('name')
-                    ->label(__('labels.global.name'))
-                    ->required(),
                 TextInput::make('nameAR')
                     ->label(__('labels.global.name_ar'))
+                    ->required(),
+                TextInput::make('name')
+                    ->label(__('labels.global.name'))
                     ->required(),
             ]);
     }

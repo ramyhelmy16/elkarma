@@ -68,7 +68,6 @@ class AdminPanelProvider extends PanelProvider
                         ['code' => 'de', 'name' => 'Deutsch', 'flag' => 'de'],
                     ])
                     ->showOnAuthPages()
-                    ->defaultLocale('ar')
                     ->rememberLocale(),
                 FilamentShieldPlugin::make(),
             ])

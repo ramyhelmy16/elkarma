@@ -41,7 +41,12 @@ class CompanyResource extends Resource
                         Select::make('service_id')
                             ->label(__('labels.global.service'))
                             ->relationship('service', 'name')
-                            ->searchable()
+                            ->options(function () {
+                                return Service::all()->mapWithKeys(function ($service) {
+                                    return [$service->id => $service->translatedName];
+                                });
+                            })
+                            ->searchable(['name', 'name_en'])
                             ->preload()
                             ->columnSpan(2)
                             ->required()
@@ -49,11 +54,15 @@ class CompanyResource extends Resource
                                 TextInput::make("service_name")
                                     ->label(__('labels.global.service'))
                                     ->required()
+                                    ->maxLength(255), 
+                                TextInput::make("service_name_en")
+                                    ->label(__('labels.global.service_en'))
                                     ->maxLength(255)
                             ])
                             ->createOptionUsing(function (array $data) {
                                 return Service::create([
                                     'name' => $data['service_name'],
+                                    'name_en' => $data['service_name_en']
                                 ])->id;
                             }),
                         TextInput::make('contact_person')

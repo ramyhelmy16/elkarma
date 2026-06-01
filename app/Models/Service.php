@@ -13,4 +13,11 @@ class Service extends Model
     {
         return $this->hasMany(Company::class);
     }
+
+        public function getTranslatedNameAttribute(): string
+    {
+        return app()->getLocale() === 'ar'
+            ? $this->name 
+            : $this->name_en;
+    }
 }

@@ -16,6 +16,6 @@ class ApplicantType extends Model
     {
         return app()->getLocale() === 'ar'
             ? $this->name 
-            : $this->name_en;
+            : ($this->name_en ?? $this->name);
     }
 }

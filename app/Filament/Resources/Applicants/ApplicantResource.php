@@ -12,7 +12,8 @@ use App\Models\{
     Area,
     Gender,
     JobTitle,
-    Qualification
+    Qualification, 
+    EducationLevel
 };
 use Filament\Forms\Components\{
     Checkbox,
@@ -80,6 +81,7 @@ class ApplicantResource extends Resource
                                 Select::make('area_id')
                                     ->label(__('labels.global.area'))
                                     ->relationship('area', 'name')
+                                    ->searchable('name')
                                     ->createOptionForm([
                                         Section::make()
                                             ->columns(2)
@@ -108,15 +110,16 @@ class ApplicantResource extends Resource
                             ->schema([
                                 Select::make('education_level_id')
                                     ->relationship('educationLevel', 'name')
-                                    ->getOptionLabelFromRecordUsing(
-                                        fn($record) =>
-                                        app()->getLocale() === 'ar' ? $record->nameAR : $record->name
-                                    )
+                                    ->searchable(['name', 'name_en'])
+                                    ->getOptionLabelFromRecordUsing(fn(EducationLevel $record) => $record->translated_name)
                                     ->required()
-                                    ->label(__('labels.global.education_level')),
+                                    ->label(__('labels.global.education_level'))
+                                    ->preload(),
                                 Select::make('qualification_id')
                                     ->label(__('labels.global.qualification'))
                                     ->relationship('qualification', 'name')
+                                    ->searchable(['name', 'name_en'])
+                                    ->getOptionLabelFromRecordUsing(fn(Qualification $record) => $record->translated_name)
                                     ->createOptionForm([
                                         Section::make()
                                             ->schema([
@@ -166,11 +169,16 @@ class ApplicantResource extends Resource
                                         Select::make('job_title_id')
                                             ->label('المسمى الوظيفي')
                                             ->required()
-                                            ->searchable()
+                                            ->relationship('jobTitle', 'name')
+                                            ->searchable(['name', 'name_en'])
                                             ->preload()
-                                            ->options(JobTitle::pluck('name', 'id'))
+                                            ->getOptionLabelFromRecordUsing(fn(JobTitle $record) => $record->translated_name)
                                             ->createOptionForm([
                                                 TextInput::make('name')
+                                                    ->label('اسم الوظيفة')
+                                                    ->required()
+                                                    ->maxLength(255),
+                                                TextInput::make('name_en')
                                                     ->label('اسم الوظيفة')
                                                     ->required()
                                                     ->maxLength(255),
@@ -181,6 +189,7 @@ class ApplicantResource extends Resource
                                             ->createOptionUsing(function (array $data) {
                                                 return JobTitle::create([
                                                     'name' => $data['name'],
+                                                    'name_en' => $data['name_en'],
                                                     'description' => $data['description'] ?? null,
                                                 ])->id;
                                             }),

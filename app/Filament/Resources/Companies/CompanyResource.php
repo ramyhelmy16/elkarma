@@ -41,11 +41,7 @@ class CompanyResource extends Resource
                         Select::make('service_id')
                             ->label(__('labels.global.service'))
                             ->relationship('service', 'name')
-                            ->options(function () {
-                                return Service::all()->mapWithKeys(function ($service) {
-                                    return [$service->id => $service->translatedName];
-                                });
-                            })
+                            ->getOptionLabelFromRecordUsing(fn(Service $record) => $record->translated_name)
                             ->searchable(['name', 'name_en'])
                             ->preload()
                             ->columnSpan(2)

@@ -107,15 +107,17 @@ class AdminNavigation
                             ->icon(Heroicon::OutlinedClipboardDocumentCheck),
                     ]),
 
-                NavigationGroup::make(__('labels.menus.admin_management'))
-                    ->items([
-                        NavigationItem::make(__('labels.global.users'))
-                            ->url(UserResource::getUrl())
-                            ->icon(Heroicon::OutlinedUsers),
-                        NavigationItem::make(__('labels.global.roles'))
-                            ->url(RoleResource::getUrl())
-                            ->icon(Heroicon::OutlinedShieldCheck),
-                    ]),
+                    ...(auth()->user()?->hasRole('super_admin') ? [
+                        NavigationGroup::make(__('labels.menus.admin_management'))
+                            ->items([
+                                NavigationItem::make(__('labels.global.users'))
+                                    ->url(UserResource::getUrl())
+                                    ->icon(Heroicon::OutlinedUsers),
+                                NavigationItem::make(__('labels.global.roles'))
+                                    ->url(RoleResource::getUrl())
+                                    ->icon(Heroicon::OutlinedShieldCheck),
+                            ]),
+                    ] : []),
             ]);
     }
 }

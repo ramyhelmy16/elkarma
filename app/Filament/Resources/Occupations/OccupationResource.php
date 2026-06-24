@@ -7,7 +7,14 @@ use App\Filament\Resources\Occupations\{
     Pages\ListOccupations,
     Tables\OccupationsTable
 };
+use App\Models\ApplicantType;
 use App\Models\Company;
+use App\Models\EducationLevel;
+use App\Models\ExperienceLevel;
+use App\Models\ExtraBenefits;
+use App\Models\Gender;
+use App\Models\InsuranceType;
+use App\Models\JobType;
 use Filament\Forms\Components\{
     DatePicker,
     Select,
@@ -107,8 +114,7 @@ class OccupationResource extends Resource
                                     ->relationship('educationLevel', 'name')
                                     ->default(4)
                                     ->getOptionLabelFromRecordUsing(
-                                        fn($record) =>
-                                        app()->getLocale() === 'ar' ? $record->nameAR : $record->name
+                                        fn(EducationLevel $record): string => $record->translated_name
                                     )
                                     ->required()
                                     ->label(__('labels.global.education_level')),
@@ -117,8 +123,7 @@ class OccupationResource extends Resource
                                     ->relationship('experienceLevel', 'name')
                                     ->default(1)
                                     ->getOptionLabelFromRecordUsing(
-                                        fn($record) =>
-                                        app()->getLocale() === 'ar' ? $record->nameAR : $record->name
+                                        fn(ExperienceLevel $record): string => $record->translated_name
                                     )
                                     ->required(),
                                 Select::make('job_type_id')
@@ -126,8 +131,7 @@ class OccupationResource extends Resource
                                     ->relationship('jobType', 'name')
                                     ->default(1)
                                     ->getOptionLabelFromRecordUsing(
-                                        fn($record) =>
-                                        app()->getLocale() === 'ar' ? $record->nameAR : $record->name
+                                        fn(JobType $record): string => $record->translated_name
                                     )
                                     ->required(),
                             ]),
@@ -168,16 +172,14 @@ class OccupationResource extends Resource
                                     ->relationship('insuranceType', 'name')
                                     ->default(1)
                                     ->getOptionLabelFromRecordUsing(
-                                        fn($record) =>
-                                        app()->getLocale() === 'ar' ? $record->nameAR : $record->name
+                                        fn(InsuranceType $record): string => $record->translated_name
                                     ),
                                 Select::make('extra_benefit_id')
                                     ->label(__('labels.global.extra_benefits'))
                                     ->relationship('extraBenefits', 'name')
                                     ->default(1)
                                     ->getOptionLabelFromRecordUsing(
-                                        fn($record) =>
-                                        app()->getLocale() === 'ar' ? $record->nameAR : $record->name
+                                        fn(ExtraBenefits $record): string => $record->translated_name
                                     ),
                                 Toggle::make('incentives')->label('حوافز ومكافآت')
                                     ->label(__('labels.global.incentives')),
@@ -190,16 +192,14 @@ class OccupationResource extends Resource
                                     ->relationship('applicantType', 'name')
                                     ->default(1)
                                     ->getOptionLabelFromRecordUsing(
-                                        fn($record) =>
-                                        app()->getLocale() === 'ar' ? $record->nameAR : $record->name
+                                        fn(ApplicantType $record): string => $record->translated_name
                                     ),
                                 Select::make('gender_id')
                                     ->label(__('labels.global.gender_preference'))
                                     ->relationship('gender', 'name')
                                     ->default(3)
                                     ->getOptionLabelFromRecordUsing(
-                                        fn($record) =>
-                                        app()->getLocale() === 'ar' ? $record->nameAR : $record->name
+                                        fn(Gender $record): string => $record->translated_name
                                     ),
                                 TextInput::make('age_min')
                                     ->numeric()
